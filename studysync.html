@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudySync</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Grape+Nuts&family=Lexend:wght@100..900&family=Playwrite+IT+Moderna:wght@100..400&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Darumadrop+One&family=Grape+Nuts&family=Lexend:wght@100..900&family=Playwrite+IT+Moderna:wght@100..400&family=Space+Grotesk:wght@300..700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: "Lexend", sans-serif;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .videobackground{
+            position: fixed;
+            top: 500px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .videobackground1{
+            position: fixed;
+            top: 1000px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 0.1rem;
+        }
+
+        .header {
+            width: 97%;
+            margin: 10px auto;
+            background-color: rgba(240, 248, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .header:hover {
+            transform: scale(0.95);
+            background-color: aliceblue;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: black;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            height: 60px;
+            width: auto;
+        }
+
+        .nav {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        @media screen and (min-width: 768px) {
+            .nav {
+                display: flex;
+            }
+        }
+
+        .nav-link {
+            color: rgb(0, 21, 50);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .nav-link:hover {
+            transform: scale(1.2);
+            opacity: 0.8;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .contact {
+            display: none;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        @media screen and (min-width: 768px) {
+            .contact {
+                display: block;
+            }
+        }
+
+        .menu-icon {
+            height: 1.5rem;
+            width: 1.5rem;
+        }
+
+        .menu-button {
+            display: none;
+            border: none;
+            border-radius: 20px;
+            background-color: transparent;
+        }
+
+        @media screen and (max-width: 768px) {
+            .menu-button {
+                display: block;
+            }
+        }
+
+        .main-section{
+            max-width: 1280px;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 0.6rem ;
+            align-items: center;
+            margin: 0 auto;
+        }
+        .content-left{
+               text-align: center;
+               animation: slideFromLeft 1s ease forwards;
+               opacity: 0;
+        }
+        @keyframes slideFromLeft{
+            0%{
+                 opacity: 0;
+                 transform: translateX(-100%);
+            }
+            100%{
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        .section-leble{
+               font-size: 1.5rem;
+               font-weight: 600;
+               color: rgb(0 28 81 / 76%);
+        }
+        .section-tittle{
+            font-size: 2.5rem;
+            color: rgb(68, 101, 207);
+        }
+        .section-description{
+            color: rgb(0 0 0 / 65%);
+            font-size: 1.15rem;
+        }
+        .now,.tour{
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 255, 0.7);
+            color: white;
+            padding: 0.5rem 1rem;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .now:hover{
+            transform: scale(0.95);
+            background-color: rgba(3, 7, 88, 0.418);
+            backdrop-filter: blur(10px);
+            color: rgb(197, 197, 255);
+            font-weight: bold;
+        }
+        .tour:hover{
+            transform: scale(0.95);
+            background-color: rgba(3, 7, 88, 0.418);
+            backdrop-filter: blur(10px);
+            color: rgb(197, 197, 255);
+            font-weight: bold;
+        }
+        .content1{
+            height: auto;
+            width: 95%;
+            padding-inline: 20px;
+            background-color: rgba(208, 216, 255, 0.338);
+            backdrop-filter: blur(50px);
+            margin: 10px;
+            border-radius: 30px;
+        }
+        .button-group{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1rem;
+            margin-top: 10px;
+        }
+        .content-right{
+            width: 500;
+            height: 196.08;
+        }
+        .section-image{
+            width: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 2);
+            height: 57vh;
+            transition: transform 0.3s ease
+        }
+        .section-image:hover{
+            transform: scale(0.84);
+        }
+        @media screen and (min-width:768px) {
+            .main-section{
+                flex-direction: row;
+            }
+        }
+        .company-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .company-logo img {
+            width: 150px;
+            height: auto;
+            border-radius: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .company-logo img:hover {
+            transform: scale(1.1);
+        }
+       
+              .maincard h1{
+                font-weight: 600;
+                margin-bottom: 10px;
+              }
+              .maincard p{
+                font-size: medium;
+                margin-bottom: 10px;
+              }
+
+        .cards{
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .card1,.card2,.card3,.card4,.card5,.card6{
+            height: 97%;
+            width: auto;
+            padding-inline: 5px;
+            border-radius: 20px;
+            background-color: rgba(0, 0, 255, 0.269);
+            backdrop-filter: blur(20px);
+            margin-bottom: 10px;
+            transition: transform 0.3s ease
+        }
+        .card1:hover{
+            transform: scale(1.1);
+            background-color: rgb(0, 0, 255);
+            color: rgb(200, 210, 255);
+        }
+        .card2{
+            background-color: rgba(255, 0, 0, 0.269);
+            backdrop-filter: blur(20px);
+        }
+        .card2:hover{
+            transform: scale(1.1);
+            background-color: rgb(255, 0, 0);
+            color: rgb(255, 214, 214);
+        }
+        .card3{
+            background-color: rgba(255, 242, 0, 0.269);
+            backdrop-filter: blur(20px);
+        }
+        .card3:hover{
+            transform: scale(1.1);
+            background-color: rgb(255, 242, 0);
+        }
+        .card4{
+            background-color: rgba(0, 255, 174, 0.269);
+            backdrop-filter: blur(20px);
+        }
+        .card4:hover{
+            transform: scale(1.1);
+            background-color: rgb(0, 255, 174);
+        }
+        .card5{
+            background-color: rgba(89, 255, 0, 0.269);
+            backdrop-filter: blur(20px);
+        }
+        .card5:hover{
+            transform: scale(1.1);
+            background-color: rgb(89, 255, 0);
+        }
+        .card6{
+            background-color: rgba(98, 0, 255, 0.269);
+            backdrop-filter: blur(20px);
+        }
+        .card6:hover{
+            transform: scale(1.1);
+            background-color: rgb(98, 0, 255);
+            color: white;
+        }
+        .icon-container{
+            height: 60px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon-container img{
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            margin-top: 7px;
+        }
+        .testimonial-container{
+            width: 97%;
+            margin: 10px auto;
+            background-color: rgba(177, 219, 255, 0.5);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+      
+        .testimonial-grid {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+    body .testimonial-grid {
+        flex-direction: row;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <video autoplay muted loop   class="video-background">
+        <source src="https://videos.pexels.com/video-files/3971195/3971195-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="header">
+        <header class="header-content">
+            <a class="logo" href="#logo">
+                <img class="logo-icon" src="https://raw.githubusercontent.com/loveBabbar/CodehelpYTWebDev/5f10c3122a1081eed273bdf54a733d5302540105/html_CSS_JS/lecture33/images/StudySyn.svg" alt="StudySync Logo">
+                <span class="logo-text">StudySync</span>
+            </a>
+            <nav class="nav">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#about" class="nav-link">About</a>
+            </nav>
+            <a class="contact" href="#contact-us">Contact Us</a>
+            <button class="menu-button">
+                <img src="https://raw.githubusercontent.com/loveBabbar/CodehelpYTWebDev/5f10c3122a1081eed273bdf54a733d5302540105/html_CSS_JS/lecture33/images/Hamburger.svg" alt="menu button" class="menu-icon">
+            </button>
+        </header>
+    </div>
+            <div class="content1">
+                <section class="main-section">
+                    <div class="content-left">
+                          <p class="section-leble">Very Proud to Introduce</p>
+                          <h1 class="section-tittle">Seamless Learning for Bright Futures</h1>
+                          <p class="section-description">Our innovative platform offers an rffortless and seamless approach to 
+                            learning, empowering students of all ages to achive brighter futures. join 
+                            us on a transformative journey to simplify education and unlock your full 
+                            potential.
+                        </p>
+                          <div class="button-group">
+                            <a href="#start" class="now">Start Now</a>
+                            <a href="#tour" class="tour">Take Tour</a>
+                          </div>            
+                    </div>
+                    <div class="content-right">
+                                <img src="https://miro.medium.com/v2/resize:fit:679/0*QVpm-5W90JM1R2NH.gif" alt="image tag doesn't sopport" class="section-image">
+                    </div>
+                </section>
+            </div>
+            <video autoplay muted loop class="videobackground">
+                <source src="https://videos.pexels.com/video-files/3971195/3971195-hd_1920_1080_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <video autoplay muted loop class="videobackground1">
+                <source src="C:\Users\dashs\Downloads\3971170-hd_1920_1080_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="content1">
+                <h2>Trusted By the Best</h2>
+
+                <div class="company-grid">
+
+                    <div class="company-logo">
+                            <a href="#Google"><img src="https://cdn.dribbble.com/users/1822162/screenshots/9854717/media/66970c682f9cb3f62d382b9ee511416c.gif" alt="" class="google-logo"></a>
+                        </div>
+
+
+                        <div class="company-logo">
+                            <a href="#Microsoft"><img src="https://i.pinimg.com/originals/ae/0f/f7/ae0ff7605c9a96c05a818afc561a17c6.gif" alt="" class="google-logo"></a>
+                        </div>
+
+
+                        <div class="company-logo">
+                            <a href="#LinkedIn"><img src="https://redkite.design/wp-content/uploads/2022/07/LinkedIn-logo-animation.gif" alt="" class="google-logo"></a>
+                        </div>
+
+
+                        <div class="company-logo">
+                            <a href="#Amazon"><img src="https://cdn.dribbble.com/users/2646511/screenshots/15514262/media/1402075e2970b2c998e3530b4dd5dd1b.gif" alt="" class="google-logo"></a>
+                        </div>
+
+                </div>
+            </div>
+            <div class="content1">
+
+                <div class="maincard">
+                         <h1>Our Cometitive advantage</h>
+                         <p>This is the section of some simple filler text, also known as placeholder text. It shares some charecteristics of real written text but is random or otherwise generated.</p>
+                </div>
+                <div class="cards">
+                        <div class="card1">
+                               <div class="icon-container">
+                                <img src="https://cdn-icons-gif.flaticon.com/11184/11184182.gif" alt="Not sopported!">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                          Personalized Learning 
+                                      </div>
+                                      <div class="feture-description">
+                                           Offer tailored learing experiences through AI and machine learing to cater to individual student needs.
+                                      </div>
+                               </div>
+                        </div>
+                        <div class="card2">
+                            <div class="icon-container">
+                                <img src="https://cdn-icons-gif.flaticon.com/15401/15401346.gif" alt="not sopported">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                        Analytics and Insights
+                                      </div>
+                                      <div class="feture-description">
+                                        Offer detailed progress tracking and analytics to help students and teachers monitor performance and make data-driven decisions.
+                                      </div>
+                               </div>
+                        </div>
+                        <div class="card3">
+                            <div class="icon-container">
+                                <img src="https://media.lordicon.com/icons/wired/lineal/2115-refund.gif" alt="not sopported">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                        Affordability 
+                                      </div>
+                                      <div class="feture-description">
+                                        Provide high-quality education at an affordable price point, making it accessible to a broader audience.
+                                      </div>
+                               </div>
+                        </div>
+                        <div class="card4">
+                            <div class="icon-container">
+                                <img src="https://www.thewebplant.com/hs-fs/hubfs/73195-business-partnership-contract-handshake.gif?width=424&height=424&name=73195-business-partnership-contract-handshake.gif" alt="not sopported">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                        Industry Partnerships
+                                      </div>
+                                      <div class="feture-description">
+                                        Collaborate with well-known companies and institutions to offer accredited courses and certifications, adding credibility to your offerings.
+
+                                      </div>
+                               </div>
+                        </div>
+                        <div class="card5">
+                            <div class="icon-container">
+                                <img src="https://i.pinimg.com/originals/87/30/b2/8730b273ed414c986407066b2017cc85.gif" alt="not sopported">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                        Innovative Technology
+                                      </div>
+                                      <div class="feture-description">
+                                        Utilize cutting-edge technology, such as augmented reality or virtual reality, to create immersive learning experiences.
+                                      </div>
+                               </div>
+                        </div>
+                        <div class="card6">
+                            <div class="icon-container">
+                                <img src="https://cdn-icons-gif.flaticon.com/12134/12134150.gif" alt="not sopported">
+                               </div>
+                               <div class="feature-info">
+                                      <div class="feature-title">
+                                        Responsive Support
+                                      </div>
+                                      <div class="feture-description">
+                                        Provide exceptional customer support and assistance to students and educators.
+                                      </div>
+                               </div>
+                        </div>
+                </div>
+            </div>
+      
+            <div class="testimonial-container">
+                <div class="testimonial-content">
+                    <h2>  What Others Say About Us</h2>
+                    <div class="testmonial-grid">
+                        <!-- card1 -->
+                                    <div class="testimonial-card">
+                                       <div class="testimonial-text">
+                                        “StudySync revolutionized my classroom! Engaging content and teacher resources make learning enjoyable. Highly recommended for educators.”
+                                       </div>
+                                       <div class="testimonial-avater">
+                                                <img src="" alt="">
+                                       </div>
+                                       <div class="testimonial-details">
+                                        <h3>
+                                            Sarah Johnson
+                                        </h3>
+                                        <p>
+                                            8th Grade English Teacher
+                                        </p>
+                                       </div>
+                                    </div>
+
+                        <!-- card2 -->
+                        <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                “StudySync transformed our family's learning journey. Safe, interactive, and progress tracking features are invaluable for parents.”
+                            </div>
+                            <div class="testimonial-avater">
+                                     <img src="" alt="">
+                            </div>
+                            <div class="testimonial-details">
+                             <h3>
+                                Sarah Johnson
+                             </h3>
+                             <p>
+                                8th Grade English Teacher
+                             </p>
+                            </div>
+                         </div>
+                         <!-- card3 -->
+                         <div class="testimonial-card">
+                            <div class="testimonial-text">
+                                “StudySync, a true game-changer! Flexible content, tailored assessments, and excellent support. Integral to our school district's success.”
+                            </div>
+                            <div class="testimonial-avater">
+                                     <img src="" alt="">
+                            </div>
+                            <div class="testimonial-details">
+                             <h3>
+                                Sarah Johnson
+                             </h3>
+                             <p>
+                                8th Grade English Teacher
+                             </p>
+                            </div>
+                         </div>
+
+                    </div>
+                </div>
+            </div>
+
+</body>
+</html>
